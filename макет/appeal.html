@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Апелляция результатов экзамена</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+
+    <body>
+        <div class="appeal-block">
+            <div class="appeal-info">
+                <div class="appeal-title">
+                    В случае несогласия с результатами экзамена Кандидат имеет право на подачу апелляции:
+                </div>
+
+                <div class="deadline-item">
+                    <span class="red-circle"></span>
+                    <div class="deadline-text">
+                        сроки подачи: не позднее 6 недель с даты письменного экзамена.
+                    </div>
+                </div>
+
+                <div class="deadline-item">
+                    <span class="red-circle"></span>
+                    <div class="deadline-text">
+                        сроки рассмотрения: от 2 дней до 3 недель с даты получения запроса.
+                    </div>
+                </div>
+
+                <div class="deadline-item">
+                    <span class="red-circle"></span>
+                    <div class="deadline-text">
+                        стоимость: 9500 рублей* + 100 рублей комиссия за онлайн перевод.
+                    </div>
+                </div>
+            </div>
+
+            <div class="steps-section">
+                <div class="steps-row">
+                    <div class="step-block">
+                        <div class="step-title">СКАЧАЙТЕ И ЗАПОЛНИТЕ</div>
+                        <div class="step-subtitle">два файла с заявлением на апелляцию</div>
+
+                        <div class="pdf-container">
+                            <div class="pdf-item">
+                                <div class="pdf-icon">
+                                    <div class="pdf-label">PDF</div>
+                                    <div class="pdf-number-left-top">1</div>
+                                    <div class="arrow-badge">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </div>
+                                    <a href="#" class="download-link-icon" onclick="return downloadFile1(event)">
+                                        <span>Скачать</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pdf-item">
+                                <div class="pdf-icon">
+                                    <div class="pdf-label">PDF</div>
+                                    <div class="pdf-number-left-top">2</div>
+                                    <div class="arrow-badge">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </div>
+                                    <a href="#" class="download-link-icon" onclick="return downloadFile2(event)">
+                                        <span>Скачать</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-block">
+                        <div class="step-title">ОТСКАНИРУЙТЕ И ЗАГРУЗИТЕ</div>
+                        <div class="step-subtitle">Заполненные заявления</div>
+
+                        <div class="pdf-container">
+                            <div class="pdf-item">
+                                <div class="pdf-icon" id="uploadIcon1" onclick="return openFileInput(1)">
+                                    <div class="pdf-label">PDF</div>
+                                    <div class="pdf-number-center">1</div>
+                                    <div class="icon-badge" id="badge1">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="file-info">
+                                    <div class="file-name file-empty" id="fileName1">Файл не загружен</div>
+                                    <div class="file-size" id="fileSize1">PDF, до 10 MB</div>
+                                </div>
+                            </div>
+                            <div class="pdf-item">
+                                <div class="pdf-icon" id="uploadIcon2" onclick="return openFileInput(2)">
+                                    <div class="pdf-label">PDF</div>
+                                    <div class="pdf-number-center">2</div>
+                                    <div class="icon-badge" id="badge2">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="file-info">
+                                    <div class="file-name file-empty" id="fileName2">Файл не загружен</div>
+                                    <div class="file-size" id="fileSize2">PDF, до 10 MB</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="upload-actions">
+                            <button class="upload-action-btn upload-reset-btn" onclick="return resetAllUploads(event)">
+                                <i class="fas fa-redo"></i> Очистить все
+                            </button>
+                            <button class="upload-action-btn upload-submit-btn" id="submitBtn" disabled
+                                onclick="return submitUploadedFiles(event)">
+                                <i class="fas fa-paper-plane"></i> Отправить
+                            </button>
+                        </div>
+                    </div>
+                    <div class="step-block">
+                        <div class="step-title">ОПЛАТИТЕ</div>
+                        <div class="step-subtitle">Подачу апелляции</div>
+
+                        <div class="price-text">
+                            Стоимость апелляции 700 рублей
+                        </div>
+
+                        <button class="pay-btn" onclick="return processPayment(event)">
+                            ОПЛАТА АПЕЛЛЯЦИИ
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <input type="file" id="fileInput1" class="file-input" accept=".pdf" onchange="handleFileUpload(this, 1)">
+            <input type="file" id="fileInput2" class="file-input" accept=".pdf" onchange="handleFileUpload(this, 2)">
+            <div class="info-box">
+                <div class="info-title">Важная информация для корректного заполнения заявления.</div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <span class="info-value">Center name: BKC-ih Moscow IELTS Test Center</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-value">Center number: RU087</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-value">Candidate number: Цифры в верхнем правом углу сертификата/можно не
+                            заполнять, если сертификат еще не получен.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const uploadedFiles = {
+                1: null,
+                2: null
+            };
+
+            function downloadFile1(event) {
+                event.preventDefault();
+                alert('Скачивается файл заявления №1');
+
+                const link = event.currentTarget;
+                const originalHTML = link.innerHTML;
+
+                link.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Загрузка...</span>';
+
+                setTimeout(() => {
+                    link.innerHTML = originalHTML;
+                    alert('Файл №1 успешно скачан!');
+                }, 1500);
+                return false;
+            }
+
+            function downloadFile2(event) {
+                event.preventDefault();
+                alert('Скачивается файл заявления №2');
+
+                const link = event.currentTarget;
+                const originalHTML = link.innerHTML;
+
+                link.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Загрузка...</span>';
+
+                setTimeout(() => {
+                    link.innerHTML = originalHTML;
+                    alert('Файл №2 успешно скачан!');
+                }, 1500);
+                return false;
+            }
+
+            function processPayment(event) {
+                event.preventDefault();
+                alert('В реальном проекте здесь будет переход на страницу оплаты.');
+
+                const btn = event.currentTarget;
+                const originalHTML = btn.innerHTML;
+
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Обработка...';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.disabled = false;
+                    alert('Оплата успешно обработана!');
+                }, 2000);
+                return false;
+            }
+
+            function openFileInput(fileNumber) {
+                document.getElementById(`fileInput${fileNumber}`).click();
+                return false;
+            }
+
+            function handleFileUpload(input, fileNumber) {
+                const file = input.files[0];
+                if (!file) {
+                    console.log('Файл не выбран');
+                    return;
+                }
+
+                if (!file.type.includes('pdf')) {
+                    alert('Пожалуйста, загрузите файл в формате PDF');
+                    return;
+                }
+
+                if (file.size > 10 * 1024 * 1024) {
+                    alert('Размер файла не должен превышать 10 MB');
+                    return;
+                }
+
+                uploadedFiles[fileNumber] = {
+                    name: file.name,
+                    size: formatFileSize(file.size),
+                    file: file
+                };
+
+                updateFileDisplay(fileNumber);
+                updateSubmitButton();
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+            }
+
+            function updateFileDisplay(fileNumber) {
+                const pdfIcon = document.getElementById(`uploadIcon${fileNumber}`);
+                const badge = document.getElementById(`badge${fileNumber}`);
+                const fileData = uploadedFiles[fileNumber];
+
+                if (fileData) {
+                    pdfIcon.classList.add('uploaded');
+                    badge.innerHTML = '<i class="fas fa-pencil-alt"></i>';
+                    badge.classList.add('uploaded');
+
+                    const numberCenter = pdfIcon.querySelector('.pdf-number-center');
+                    if (numberCenter && !numberCenter.parentElement.classList.contains('pdf-number-with-check')) {
+                        numberCenter.outerHTML = `
+                    <div class="pdf-number-with-check">
+                        <span class="pdf-number-center">${fileNumber}</span>
+                        <span class="checkmark-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                `;
+                    }
+
+                    const fileNameElement = document.getElementById(`fileName${fileNumber}`);
+                    fileNameElement.textContent = fileData.name;
+                    fileNameElement.classList.remove('file-empty');
+
+                    const fileSizeElement = document.getElementById(`fileSize${fileNumber}`);
+                    fileSizeElement.textContent = fileData.size + ' • PDF';
+                } else {
+
+                    pdfIcon.classList.remove('uploaded');
+                    badge.innerHTML = '<i class="fas fa-plus"></i>';
+                    badge.classList.remove('uploaded');
+
+                    const checkContainer = pdfIcon.querySelector('.pdf-number-with-check');
+                    if (checkContainer) {
+                        checkContainer.outerHTML = `<div class="pdf-number-center">${fileNumber}</div>`;
+                    }
+
+                    const fileNameElement = document.getElementById(`fileName${fileNumber}`);
+                    fileNameElement.textContent = 'Файл не загружен';
+                    fileNameElement.classList.add('file-empty');
+
+                    const fileSizeElement = document.getElementById(`fileSize${fileNumber}`);
+                    fileSizeElement.textContent = 'PDF, до 10 MB';
+                }
+            }
+
+            function updateSubmitButton() {
+                const submitBtn = document.getElementById('submitBtn');
+                const allUploaded = Object.values(uploadedFiles).every(file => file !== null);
+
+                submitBtn.disabled = !allUploaded;
+            }
+
+            function resetAllUploads(event) {
+                event.preventDefault();
+
+                if (!confirm('Вы уверены, что хотите удалить все загруженные файлы?')) {
+                    return false;
+                }
+
+                uploadedFiles[1] = null;
+                uploadedFiles[2] = null;
+
+                for (let i = 1; i <= 2; i++) {
+                    updateFileDisplay(i);
+
+                    const fileInput = document.getElementById(`fileInput${i}`);
+                    if (fileInput) {
+                        fileInput.value = '';
+                    }
+                }
+
+                updateSubmitButton();
+
+                alert('Все загруженные файлы удалены!');
+                return false;
+            }
+
+            function submitUploadedFiles(event) {
+                event.preventDefault();
+
+                if (!uploadedFiles[1] || !uploadedFiles[2]) {
+                    alert('Пожалуйста, загрузите оба файла');
+                    return false;
+                }
+
+                alert(`Файлы успешно отправлены на проверку!\n\n1. ${uploadedFiles[1].name}\n2. ${uploadedFiles[2].name}`);
+                const submitBtn = document.getElementById('submitBtn');
+                const originalHTML = submitBtn.innerHTML;
+
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Отправлено!';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.disabled = false;
+                }, 3000);
+                return false;
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+
+                const uploadIcons = document.querySelectorAll('#uploadIcon1, #uploadIcon2');
+
+                uploadIcons.forEach(icon => {
+                    icon.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        icon.style.borderColor = '#dc3545';
+                        icon.style.background = '#fff5f5';
+                    });
+
+                    icon.addEventListener('dragleave', (e) => {
+                        e.preventDefault();
+                        const fileNumber = icon.id.replace('uploadIcon', '');
+                        const isUploaded = uploadedFiles[fileNumber];
+
+                        icon.style.borderColor = isUploaded ? '#28a745' : '#e0e0e0';
+                        icon.style.background = isUploaded ? '#f9fff9' : '#f8f9fa';
+                    });
+
+                    icon.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        const fileNumber = icon.id.replace('uploadIcon', '');
+                        const file = e.dataTransfer.files[0];
+
+                        if (file) {
+                            const input = document.getElementById(`fileInput${fileNumber}`);
+                            const dataTransfer = new DataTransfer();
+                            dataTransfer.items.add(file);
+                            input.files = dataTransfer.files;
+
+                            input.dispatchEvent(new Event('change'));
+                        }
+
+                        const isUploaded = uploadedFiles[fileNumber];
+                        icon.style.borderColor = isUploaded ? '#28a745' : '#e0e0e0';
+                        icon.style.background = isUploaded ? '#f9fff9' : '#f8f9fa';
+                    });
+                });
+
+                const checkButtons = () => {
+                    const buttons = [
+                        { id: 'submitBtn', name: 'Отправить' },
+                        { selector: '.pay-btn', name: 'Оплата' },
+                        { selector: '.upload-reset-btn', name: 'Очистить все' }
+                    ];
+
+                    buttons.forEach(btn => {
+                        if (btn.id) {
+                            const element = document.getElementById(btn.id);
+                        } else if (btn.selector) {
+                            const element = document.querySelector(btn.selector);
+                        }
+                    });
+                };
+
+                checkButtons();
+            });
+        </script>
+    </body>
+
+</html>
