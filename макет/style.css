@@ -59,12 +59,10 @@ body {
     flex-shrink: 0;
 }
 
-/* Стили для трех блоков посередине */
 .steps-section {
     margin: 50px 0 40px;
 }
 
-/* Контейнер для трех блоков */
 .steps-row {
     display: flex;
     gap: 25px;
@@ -72,7 +70,6 @@ body {
     flex-wrap: wrap;
 }
 
-/* Простые блоки без рамок и эффектов */
 .step-block {
     flex: 1;
     min-width: 300px;
@@ -97,7 +94,6 @@ body {
     min-height: 40px;
 }
 
-/* Блок с PDF иконками */
 .pdf-container {
     display: flex;
     justify-content: center;
@@ -152,7 +148,6 @@ body {
     left: 5px;
 }
 
-/* Цифра в ЛЕВОМ ВЕРХНЕМ углу для первого блока */
 .pdf-number-left-top {
     font-size: 42px;
     font-weight: 700;
@@ -179,7 +174,6 @@ body {
     border: 2px solid white;
 }
 
-/* Ссылка "Скачать" на иконке */
 .download-link-icon {
     position: absolute;
     bottom: 10px;
@@ -200,7 +194,6 @@ body {
     color: #c82333;
 }
 
-/* Бэйджи для иконок других блоков */
 .icon-badge {
     position: absolute;
     top: -10px;
@@ -228,7 +221,6 @@ body {
     background: #28a745;
 }
 
-/* Цифра по центру (без галочки) - для второго блока */
 .pdf-number-center {
     position: absolute;
     top: 50%;
@@ -244,7 +236,6 @@ body {
     color: #28a745;
 }
 
-/* Контейнер для цифры с галочкой */
 .pdf-number-with-check {
     position: absolute;
     top: 50%;
@@ -259,7 +250,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Цифра внутри контейнера с галочкой */
 .pdf-number-with-check .pdf-number-center {
     position: static;
     transform: none;
@@ -273,7 +263,6 @@ body {
     color: #28a745;
 }
 
-/* Галочка рядом с цифрой при загрузке */
 .checkmark-icon {
     color: #28a745;
     font-size: 36px;
@@ -286,7 +275,6 @@ body {
     opacity: 1;
 }
 
-/* Информация о файле */
 .file-info {
     margin-top: 10px;
     text-align: center;
@@ -316,7 +304,6 @@ body {
     display: none;
 }
 
-/* Блок оплаты */
 .price-text {
     font-size: 18px;
     font-weight: 400;
@@ -380,7 +367,6 @@ body {
     font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif;
 }
 
-/* Кнопки действий */
 .upload-actions {
     display: flex;
     justify-content: center;
@@ -430,7 +416,6 @@ body {
     color: #dc3545;
 }
 
-/* Адаптивность */
 @media (max-width: 1024px) {
     .steps-row {
         gap: 20px;
